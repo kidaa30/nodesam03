@@ -1,0 +1,71 @@
+include ./flash-messages
+
+doctype html
+html
+
+	//- HTML HEADER
+	head
+		meta(charset="utf-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(http-equiv="X-UA-Compatible" content="IE=edge")
+		meta(name="apple-mobile-web-app-capable", content="yes")
+		meta(name="apple-mobile-web-app-status-bar-style", content="translucent black")
+		//- meta(name="viewport", content="width=device-width,initial-scale=1,user-scalable=no")
+
+		title= title || 'WatsAround'
+		link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
+		link(rel="apple-touch-icon", href="/images/logo-watsaround.png")
+
+		//- Customise the stylesheet for your site by editing /public/styles/site.less
+		//- All .less files will be automatically compiled and minified in production.
+		//- link(href="/styles/site.min.css", rel="stylesheet")
+		//- link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css", rel="stylesheet")
+		link(href="/styles/bootstrap/3.3.5/bootstrap.min.css", rel="stylesheet")
+
+		//- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+		//- Safely remove this block if you are not targeting IE8
+		//-[if lt IE 9]
+		//-	script(src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js")
+		//-d	script(src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js")
+		//-[endif]
+
+		//- Include template-specific stylesheets by extending the css block
+		block css
+			link(href="/styles/dropdowns-enhancement.css", rel="stylesheet")
+			link(href="/styles/ie9_ie19_ie11.css", rel="stylesheet")
+
+		//- Add any other template-specific HEAD tags by extending the head block
+		block head
+
+	//- HTML BODY
+	body
+		block content
+
+		//- JAVASCRIPT
+
+		//- Google Analytics
+		script(type='text/javascript', src='/js/lib/analyticsTracking.js')
+
+		//- Prevent internal links in iOS standalone web apps from opening in Mobile Safari
+		script(type='text/javascript', src='/js/lib/stay_standalone.js')
+
+		//- jQuery 1.11.1 is included by default, and required by both Bootstrap
+		//- and the KeystoneJS Content Editor. If you are not targeting IE8,
+		//- you can upgrade to 2.1.1 (also bundled) for better performance.
+		script(type='text/javascript', src='/js/lib/jquery/jquery-1.11.1.min.js')
+		//- script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
+
+		//- Customise which Bootstrap javascript files are served by including
+		//- them specifically here, instead of bootstrap-3.2.0.min.js
+		script(type='text/javascript', src='/js/lib/bootstrap/bootstrap-3.3.5.min.js')
+		//- script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js")
+
+		//- Add scripts that are globally required by your site here.
+		//- script(type='text/javascript', src="/js/lib/bootstrap/dropdowns-enhancement.js")
+		script(type='text/javascript', src='/js/lib/jquery.lazyload.min.js')
+		script(type='text/javascript', src="/js/build/misc.js")
+		script(type='text/javascript', src="/socket.io/socket.io.js")
+
+		//- Include template-specific javascript files by extending the js block
+		block js
+		

@@ -1,0 +1,46 @@
+extends ./default
+
+block css
+	link(href="/styles/signin.css", rel="stylesheet")
+
+block content
+	.container(data-pagename="/root/signin")
+		form(method="post", novalidate).form-signin
+			input(type='hidden', id="_csrf", name='_csrf', value=csrfToken)
+			h2.form-signin-heading Please sign in
+			if errormessage[0]
+				p.alert.alert-warning
+					| #{errormessage} 
+			label(for="inputEmail").sr-only User name or Email address
+			input(type="email", id="inputEmail", name="username", placeholder="User name or Email address", required, autofocus).form-control
+			label(for="inputPassword").sr-only Password
+			input(type="password", id="inputPassword", name="password", placeholder="Password", required).form-control
+			.checkbox
+				label
+					input(type="checkbox", value="remember-me")
+					| Remember me
+			button(type="submit").btn.btn-lg.btn-primary.btn-block Sign in
+			br
+			.col-md-12.control(style="border-top: 1px solid#888; padding-top:15px; font-size:85%") Don't have an account! 
+				a(data-show-topage="/root/signup") Sign Up Here
+	.container(data-pagename="/root/signup", style="display: none;")
+		form(method="post", id="signupForm", novalidate).form-signin
+			h2.form-signin-heading Please sign up
+			p#signupmessage
+			label(for="signupUsername").sr-only User name
+			input(type="text", id="signupUsername", name="username", placeholder="User name", required, autofocus).form-control
+			label(for="inputEmail").sr-only Email address
+			input(type="email", id="signupEmail", name="email", placeholder="Email address", required).form-control
+			label(for="inputPassword").sr-only Password
+			input(type="password", id="signupPassword", name="password", placeholder="Password", required).form-control
+			button(type="submit").btn.btn-lg.btn-primary.btn-block Sign up
+			br
+			.col-md-12.control(style="border-top: 1px solid#888; padding-top:15px; font-size:85%") Already have an account! 
+				a(data-show-topage="/root/signin") Sign In Here
+block js
+	script.
+		$(document).ready(function(){
+			ManualSubmitForm("#signupForm", "/ajax/signup", function(text){
+				$("#signupmessage").text(text).addClass("alert alert-warning");
+			});
+		});

@@ -1,0 +1,18 @@
+<a href="#/new" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>New item</a>
+<br>
+<input type="text" ng-model="search" class="form-control" id="projects_search" placeholder="Search in list below">
+<br>
+<div class="content" infinite-scroll="LoadMore()" infinite-scroll-distance="2">
+	<div ng-animate="'animate'" ng-repeat="item in listData.mylist | filter: search | orderBy: orderProp : orderReverse | limitTo: itemsInList track by item.id" ng-mouseover="highlightMarker=true" ng-mouseleave="highlightMarker=false" ng-click="" >
+		<div id="l-el{{item.id}}" ng-class="{active: highlightMarker}" ng-class-odd="'odd'" ng-class-even="'even'">
+			<p>{{item.MLS}}</p>
+			<p>{{item.street}}</p>
+			<p>{{item.city}} {{item.province}} {{item.postcode}}</p>
+			<p>{{item.description}}</p>
+			<p>Total quantity: {{item.totalQty}}, Available quantity: {{item.ownerQty}}</p>
+			<a ng-href="#/edit/{{item.id}}"><span class="glyphicon glyphicon-pencil"></span>Edit</a>
+			<br>
+		</div>
+	</div>
+</div>
+

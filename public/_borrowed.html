@@ -1,0 +1,16 @@
+<input type="text" ng-model="search" class="form-control" id="projects_search" placeholder="Search in list below">
+<br>
+<p><span ng-show="showAlert" class="alert alert-warning">{{errorMsg}}</span></p>
+<div class="content" infinite-scroll="LoadMore()" infinite-scroll-distance="2">
+	<div ng-animate="'animate'" ng-repeat="item in listData.borrowed | filter: search | orderBy: orderProp : orderReverse | limitTo: itemsInList track by item.id" ng-mouseover="highlightMarker=true" ng-mouseleave="highlightMarker=false" ng-click="" >
+		<div id="l-el{{item.id}}" ng-class="{active: highlightMarker}" ng-class-odd="'odd'" ng-class-even="'even'">
+			<p>{{item.MLS}}</p>
+			<p>{{item.street}}</p>
+			<p>{{item.city}} {{item.province}} {{item.postcode}}</p>
+			<p>{{item.description}}</p>
+			<p>Quantity: {{item._pivot_quantity}}, Owner: <a ng-href="#/user/{{item.owner.id}}">{{item.owner.username}}</a></p>
+			<br>
+		</div>
+	</div>
+</div>
+

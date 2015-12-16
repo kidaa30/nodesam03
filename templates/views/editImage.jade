@@ -1,0 +1,23 @@
+extends ../layouts/default
+
+block intro
+	.container
+		h1 Edit Image
+	hr
+block content
+	.container
+		.row.gallery-images
+			.col-xs-6.col-sm-4.col-md-3.gallery-image
+				img.myImage(id='image'+image.id, src=imageServer+image.mini, onclick='clickFunction(' + image.id + ',' + userLoggedIn + ')', style="cursor: pointer;").img-rounded
+		hr
+		form(method="post", id='form', novalidate).auth-form
+			input(type='hidden', name=csrf_token_key, value=csrf_token_value)
+			.form-group
+				label(for='fileTitle') Image title:
+				input(type='text', size="35", id='fileTitle', name='fileTitle', value=image.title).form-control
+				label(for='fileDescription') Image description (maximum 512 characters):
+				input(type='text', maxlength="512", size="50", id='fileDescription', name='fileDescription', value=image.description).form-control
+
+			button#submitButton(type='submit').btn.btn-lg.btn-primary Save
+		hr
+		a(href='/user/'+user.id, style='margin-right: 10px').btn.btn-lg.btn-primary Back

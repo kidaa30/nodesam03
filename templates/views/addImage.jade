@@ -1,0 +1,25 @@
+extends ../layouts/default
+
+block intro
+	.container
+		h1 Add New Image
+	hr
+block content
+	.container
+		h3 Image title:
+		p
+			input#fileTitle(type='text',  size="35", value='eg: Panorama')
+		hr
+		h3 Image description (maximum 512 characters):
+		p
+			input#fileDescription(type='text', maxlength="512", size="50", value='eg: This is the image of the city where I live.')
+		hr
+		h3 Choose the file:
+			input#fileUpload(type='file')
+		hr
+		button#saveUpload(type='button', style='margin-right: 10px').btn.btn-lg.btn-primary Save
+		a(href='/user/'+user.id, style='margin-right: 10px').btn.btn-lg.btn-primary Cancel
+		p#uploadPercentage 
+		hr
+append js
+	script(data-main="js/build/prepare000.min.js", src="js/lib/require.js")

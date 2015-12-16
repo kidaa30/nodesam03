@@ -1,0 +1,76 @@
+<form name="myForm">
+  <div class="control-group" ng-class="{error: myForm.firstname.$invalid && !myForm.firstname.$pristine}">
+    <label>First name</label>
+    <input type="text" class="form-control" name="firstname" ng-model="user.firstname">
+    <span ng-show="myForm.firstname.$error.required && !myForm.firstname.$pristine" class="help-inline">
+    Required {{myForm.firstname.$pristine}}
+    </span>
+  </div>
+  <div class="control-group" ng-class="{error: myForm.lastname.$invalid && !myForm.lastname.$pristine}">
+    <label>Last name</label>
+    <input type="text" class="form-control" name="lastname" ng-model="user.lastname">
+    <span ng-show="myForm.lastname.$error.required && !myForm.lastname.$pristine" class="help-inline">
+    Required {{myForm.lastname.$pristine}}
+    </span>
+  </div>
+  <div class="control-group" ng-class="{error: myForm.company.$invalid && !myForm.company.$pristine}">
+    <label>Company</label>
+    <input type="text" class="form-control" name="company" ng-model="user.company">
+    <span ng-show="myForm.company.$error.required && !myForm.company.$pristine" class="help-inline">
+    Required {{myForm.company.$pristine}}
+    </span>
+  </div>
+  <div class="control-group" ng-class="{error: myForm.street.$invalid && !myForm.street.$pristine}">
+    <label>Street number and name</label>
+    <input type="text" class="form-control" name="street" ng-model="user.street">
+    <span ng-show="myForm.street.$error.required && !myForm.street.$pristine" class="help-inline">
+    Required {{myForm.street.$pristine}}
+    </span>
+  </div>
+  <div class="control-group" ng-class="{error: myForm.city.$invalid && !myForm.city.$pristine}">
+    <label>City</label>
+    <input type="text" class="form-control" name="city" ng-model="user.city">
+    <span ng-show="myForm.city.$error.required && !myForm.city.$pristine" class="help-inline">
+    Required {{myForm.city.$pristine}}
+    </span>
+  </div>
+  <div class="control-group" ng-class="{error: myForm.province.$invalid && !myForm.province.$pristine}">
+    <label>Province</label>
+    <input type="text" class="form-control" name="province" ng-model="user.province">
+    <span ng-show="myForm.province.$error.required && !myForm.province.$pristine" class="help-inline">
+    Required {{myForm.province.$pristine}}
+    </span>
+  </div>
+  <div class="control-group" ng-class="{error: myForm.country.$invalid && !myForm.country.$pristine}">
+    <label>Country</label>
+    <input type="text" class="form-control" name="country" ng-model="user.country">
+    <span ng-show="myForm.country.$error.required && !myForm.country.$pristine" class="help-inline">
+    Required {{myForm.country.$pristine}}
+    </span>
+  </div>
+  <div class="control-group" ng-class="{error: myForm.postcode.$invalid && !myForm.postcode.$pristine}">
+    <label>Post code</label>
+    <input type="text" class="form-control" name="postcode" ng-model="user.postcode">
+    <span ng-show="myForm.postcode.$error.required && !myForm.postcode.$pristine" class="help-inline">
+    Required {{myForm.postcode.$pristine}}
+    </span>
+  </div>
+  <div class="control-group" ng-class="{error: myForm.phone.$invalid && !myForm.phone.$pristine}">
+    <label>Phone</label>
+    <input type="text" class="form-control" name="phone" ng-model="user.phone">
+    <span ng-show="myForm.phone.$error.required && !myForm.phone.$pristine" class="help-inline">
+    Required {{myForm.phone.$pristine}}
+    </span>
+  </div>
+  <div class="control-group" ng-class="{error: myForm.email.$invalid && !myForm.email.$pristine}">
+    <label>Email</label>
+    <input type="email" class="form-control" name="email" ng-model="user.email" required>
+    <span ng-show="myForm.email.$error.required && !myForm.email.$pristine" class="help-inline">
+    Required {{myForm.email.$pristine}}
+    </span>
+  </div>
+  <br>
+  <button ng-click="GoBack()" class="btn">Cancel</button>
+  <button ng-click="UpdateUser()" ng-disabled="myForm.$invalid" class="btn btn-primary">Save</button>
+  <span ng-show="showAlert" class="alert alert-warning">{{errorMsg}}</span>
+</form>

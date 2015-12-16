@@ -1,0 +1,20 @@
+<p>
+	{{user.username}}
+	<br>
+  {{user.firstname}} {{user.lastname}}
+	<br>
+  {{user.company}}
+	<br>
+  {{user.street}}
+	<br>
+  {{user.city}} {{user.province}}
+	<br>
+  {{user.country}} {{user.postcode}}
+	<br>
+  {{user.phone}}
+	<br>
+  {{user.email}}
+  <br>
+  <a ng-href="#/editUser/" ng-show="isThisUser" class="btn btn-primary">Edit</button>
+  <span ng-show="showAlert" class="alert alert-warning">{{errorMsg}}</span>
+</p>

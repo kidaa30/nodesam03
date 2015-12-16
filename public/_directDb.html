@@ -1,0 +1,18 @@
+<form name="myForm">
+
+  <label>Content: </label>
+  <textarea id="textarea1" class="form-control" rows="15" name="content" ng-model="item.content"></textarea>
+ 
+  <br>
+
+  <div class="control-group" ng-class="{error: myForm.command.$invalid && !myForm.command.$pristine}">
+    <label>Command: </label>
+    <input type="text" ng-keyup="$event.keyCode === 13 && DirectDb()" class="form-control" name="command" ng-model="item.command">
+    <span ng-show="myForm.command.$error.required && !myForm.command.$pristine" class="help-inline">
+        Required {{myForm.command.$pristine}}
+		</span>
+  </div>
+  <br>
+	<button ng-click="item.content=''" class="btn">Clear</button>
+  <button ng-click="DirectDb()" ng-disabled="myForm.$invalid" class="btn btn-primary">Enter</button>
+</form>

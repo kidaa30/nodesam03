@@ -1,0 +1,14 @@
+<div class="container">
+  <form method="post" novalidate class="form-signin">
+		<input type="hidden" id="_csrf" name="_csrf" value="5kt2YUYR-dDtOiK78XCsPNnYgQkOaiOBcWWY">
+		<h2 class="form-signin-heading">Please sign in</h2>
+		<p ng-show="showAlert" class="alert alert-warning">{{errorMsg}}</p>
+		<label for="inputEmail" class="sr-only">User name or Email address</label>
+		<input type="text" id="inputEmail" placeholder="User name or Email address" required autofocus class="form-control" ng-model="cred.username">
+		<label for="inputPassword" class="sr-only">Password</label>
+		<input type="password" id="inputPassword" placeholder="Password" required class="form-control" ng-model="cred.password" ng-keyup="$event.keyCode === 13 && login()">
+		<div class="checkbox"><label><input type="checkbox" value="remember-me">Remember me</label></div>
+		<button type="button" ng-click="login()" class="btn btn-lg btn-primary btn-block">Sign in</button><br>
+		<div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" class="col-md-12 control">Don't have an account! <a href="#/signup">Sign Up Here</a></div>
+  </form>
+</div>

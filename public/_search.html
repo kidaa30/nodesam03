@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-lg-6">
+		<div class="input-group">
+			<input type="text" ng-model="search" class="form-control" id="projects_search" placeholder="Search for ..." ng-keyup="$event.keyCode === 13 && SearchItem()">
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="button" ng-click="SearchItem()">Search<span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+			</span>
+		</div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+<br>
+<p><span ng-show="showAlert" class="alert alert-warning">{{errorMsg}}</span></p>
+<div class="content" infinite-scroll="LoadMore()" infinite-scroll-distance="2">
+	<div ng-animate="'animate'" ng-repeat="item in items | orderBy: orderProp : orderReverse | limitTo: itemsInList track by item.id" ng-mouseover="highlightMarker=true" ng-mouseleave="highlightMarker=false" ng-click="" >
+		<div id="l-el{{item.id}}" ng-class="{active: highlightMarker}" ng-class-odd="'odd'" ng-class-even="'even'">
+			<p>{{item.MLS}}</p>
+			<p>{{item.street}}</p>
+			<p>{{item.city}} {{item.province}} {{item.postcode}}</p>
+			<p>{{item.description}}</p>
+			<p>Available quantity: {{item.ownerQty}}, Owned by: <a ng-href="#/user/{{item.owner.id}}">{{item.owner.username}}</a></p>
+			<button type="button" ng-click="GrabItem(item.id)" class="btn btn-primary">I have just been given ONE</button><br>
+			<br>
+		</div>
+	</div>
+</div>

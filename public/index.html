@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="translucent black">
+    <title>Sign In</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/images/logo-watsaround.png">
+    <link href="./styles/bootstrap/3.3.5/bootstrap.min.css" rel="stylesheet">
+    <link href="./styles/signin.css" rel="stylesheet">
+		<style>
+		.odd {
+			background-color: WhiteSmoke;
+		}
+		.even {
+			background-color: White;
+		}
+		.active {
+			background-color: LightGray;
+		}
+		</style>
+  </head>
+
+  <body ng-app="index" ng-controller="index_main">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>                        
+					</button>
+					<a class="navbar-brand" href ng-click="GoBack()"><span ng-class="{glyphicon: true, 'glyphicon-arrow-left': historyRec.showBackArrow, 'glyphicon-home': !historyRec.showBackArrow}"></span></a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Page 1-1</a></li>
+								<li><a href="#">Page 1-2</a></li>
+								<li><a href="#">Page 1-3</a></li>
+							</ul>
+						</li>
+						<li><a href="#">Page 2</a></li>
+						<li><a href="#/mylist" data-toggle="collapse" data-target="#myNavbar.in">My list</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+						<li><a href="" ng-click="logoff()"><span class="glyphicon glyphicon-log-in"></span> Log off</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="content-body">
+			<div class="container-fluid">
+				<span us-spinner spinner-key="spinner-1"></span>
+				<div ng-view>Loading...</div>
+			</div>
+		</div>
+		<nav class="navbar navbar-default navbar-fixed-bottom">
+			<div class="container-fluid">
+				<div class="btn-group btn-group-justified" role="group" aria-label="...">
+					<div class="btn-group" role="group">
+						<a href="#/search" role="button" class="btn btn-primary">search</a>
+					</div>
+					<div class="btn-group" role="group">
+						<a href="#/borrowed" role="button" class="btn btn-primary">borrowed</a>
+					</div>
+					<div class="btn-group" role="group">
+						<a href="#/lent" role="button" class="btn btn-primary">lent</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<script src="./js/lib/spinner.js"></script>
+    <script src="./js/lib/jquery/jquery-1.11.1.min.js"></script>
+    <script src="./js/lib/angular.min.js"></script>
+    <script src="./js/lib/angular-route.js"></script>
+		<script src="./js/lib/ng-infinite-scroll.min.js"></script>
+		<script src="./js/lib/angular-spinner.js"></script>
+		<script src="./js/lib/angular-socket.js"></script>
+    <script src="./js/lib/stay_standalone.js"></script>
+    <script src="./js/lib/bootstrap/bootstrap-3.3.5.min.js"></script>
+		<script src="./js/lib/jquery.lazyload.min.js"></script>
+    <script src="./js/build/misc.js"></script>
+    <script src="./js/lib/socket.io-1.3.5.js"></script>
+		<script src="KM_tools.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

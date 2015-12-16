@@ -1,0 +1,34 @@
+<div class="container">
+  <form method="post" id="signupForm" class="form-signin">
+    <h2 class="form-signin-heading">Please sign up</h2>
+    <p ng-show="showAlert" class="alert alert-warning">{{errorMsg}}</p>
+		<p ng-show="showAlert_success" class="alert alert-success">{{errorMsg}}</p>
+    <label for="signupUsername" class="sr-only">User name</label>
+    <input ng-model="cred.username" id="signupUsername" type="text" placeholder="User name" required autofocus class="form-control">
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input ng-model="cred.email" id="inputEmail" type="email" placeholder="Email address" required class="form-control">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input ng-model="cred.password" ng-keyup="$event.keyCode === 13 && signup()" id="inputPassword" type="password" placeholder="Password" required class="form-control">
+		
+		<div ng-animate="'animate'" ng-repeat="item in 
+			[
+				{name: 'firstname', description: 'First name'},
+				{name: 'lastname', description: 'Last name'},
+				{name: 'phone', description: 'Phone'},
+				{name: 'company', description: 'Company name'},
+				{name: 'street', description: 'Street No and name'},
+				{name: 'city', description: 'City'},
+				{name: 'province', description: 'Province'},
+				{name: 'country', description: 'Country'},
+				{name: 'postcode', description: 'Post code'}
+			]">
+			<div>
+				<label for="signup_{{item.name}}" class="sr-only">{{item.description}}</label>
+				<input ng-model="cred[item.name]" ng-keyup="$event.keyCode === 13 && signup()" id="signup_{{item.name}}" type="text" placeholder="{{item.description}}" required class="form-control">
+			</div>
+		</div>
+		
+    <button ng-click="signup()" type="button" class="btn btn-lg btn-primary btn-block">Sign up</button><br>
+    <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" class="col-md-12 control">Already have an account! <a href="#/signin">Sign In Here</a></div>
+  </form>
+</div>

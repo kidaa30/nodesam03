@@ -1,0 +1,57 @@
+extends ../layouts/default
+
+block intro
+	//- .container
+	//-	h1 My Images
+
+block content
+
+	- function showUTCString(milliseconds){return (new Date(Number(milliseconds))).toUTCString();}
+
+	.container
+		p
+			if user
+				a(href='/addImage', style='margin-right: 10px').btn.btn-lg.btn-primary Add New Image
+		hr
+		if images.length
+			- var currentTime = (new Date()).getTime()
+			- var userLoggedIn = (user)? true : false
+			- var timeString
+			- function timeToShow(milli) {
+			- 	var timeTemp = Math.floor(milli/31622400000)
+			- 	if (timeTemp !== 0) return timeTemp + ' years ago'
+			-	timeTemp =  Math.floor(milli/2635200000)
+			- 	if (timeTemp !== 0) return timeTemp + ' months ago'
+			-	timeTemp =  Math.floor(milli/86400000)
+			- 	if (timeTemp !== 0) return timeTemp + ' days ago'
+			-	timeTemp =  Math.floor(milli/3600000)
+			- 	if (timeTemp !== 0) return timeTemp + ' hours ago'
+			-	timeTemp =  Math.floor(milli/60000)
+			- 	if (timeTemp !== 0) return timeTemp + ' minutes ago'
+			-	timeTemp =  Math.floor(milli/1000)
+			- 	if (timeTemp !== 0) return timeTemp + ' seconds ago'
+			-	return 'moments ago'
+			- }
+			each image in images
+				.row.gallery-images
+					.col-xs-6.col-sm-4.col-md-3.gallery-image
+						img.myImage(id='image'+image.id, data-original=imageServer+image.mini, onclick='clickFunction(' + image.id + ',' + userLoggedIn + ')', style="cursor: pointer;").img-rounded
+					.col-xs-6.col-sm-4.col-md-3
+						strong #{image.title}
+						br
+						if user && user.id === galaryUserId
+							a(href='/editImage/'+image.id, style='margin-right: 10px').btn.btn-md.btn-primary Edit
+							button(type='button', onclick='deleteImageFunction(' + image.id + ')').btn.btn-md.btn-primary Delete
+					.col-xs-6.col-sm-4.col-md-3
+						strong Description:
+						p  #{image.description}
+					.col-xs-6.col-sm-4.col-md-3
+						- timeString = timeToShow(currentTime - Number(image.publishDate))
+						p #{timeString}
+				hr
+		else
+			h3.text-muted There are no images yet.
+
+append js
+	script.
+		$("img.myImage").lazyload({skip_invisible : false});

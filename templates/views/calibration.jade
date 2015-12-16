@@ -1,0 +1,8 @@
+extends ../layouts/default
+
+block content
+	.container: .jumbotron
+		button#goCalButton(type='button').btn.btn-lg.btn-primary calibration
+
+append js
+	script(data-main="js/build/goVR_short000.min.js", src='js/lib/require.js')
